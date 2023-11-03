@@ -33,6 +33,12 @@ body {
 	color: black;
 }
 </style>
+<%
+if (session.getAttribute("profile") == null) {
+
+	response.sendRedirect("index.jsp");
+}
+%>
 
 </head>
 <body>
@@ -40,6 +46,9 @@ body {
 		<a href="home.jsp">Home</a> 
 		<a href="about.jsp">About</a>
 		<a href="logout.jsp">Logout</a>
+		 <a href="profile.jsp"
+			style="float: right; border: groove; margin-right: 50px "><%=session.getAttribute("profile")%></a>
+			<a style="float: right;">Welocme | </a>
 	</div>
 
 

@@ -28,17 +28,19 @@ public class RegisterServlet extends HttpServlet
 		HttpSession session = request.getSession();
 		
 		int id = Integer.parseInt(request.getParameter("user-id"));
+		String username = request.getParameter("user-name");
 		String email = request.getParameter("user-email");
 		String password = request.getParameter("user-password");
 		try
 		{
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/volt","root", "root");
-			query = "insert into user values( ?, ?, ? )";
+			query = "insert into user values( ?, ?, ?, ? )";
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setInt(1, id);
-			preparedStatement.setString(2, email);
-			preparedStatement.setString(3, password);
+			preparedStatement.setString(2, username);
+			preparedStatement.setString(3, email);
+			preparedStatement.setString(4, password);
 			int row = preparedStatement.executeUpdate();
 			if( row != 0 )
 			{

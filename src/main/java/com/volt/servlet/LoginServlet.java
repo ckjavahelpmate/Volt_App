@@ -41,7 +41,7 @@ public class LoginServlet extends HttpServlet
 			resultSet = preparedStatement.executeQuery();
 			if( resultSet.next() )
 			{
-				session.setAttribute("profile", "loged-in");
+				session.setAttribute("profile", resultSet.getString("username"));
 				session.setAttribute("id", resultSet.getInt("id"));
 				dispatcher = request.getRequestDispatcher("home.jsp");
 				dispatcher.forward(request, response);

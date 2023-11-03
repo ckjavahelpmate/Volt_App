@@ -94,8 +94,13 @@ if (session.getAttribute("profile") != null) {
 		} else {
 		%>
 		<a href="home.jsp">Home</a> 
-		<a href="about.jsp">About</a> 
+		<a href="about.jsp">About</a>
+		<a href="displayImages.jsp">Images</a>
+		<a href="displayImages.jsp">Videos</a>
 		<a href="logout.jsp">Logout</a>
+		 <a href="profile.jsp"
+			style="float: right; border: groove; margin-right: 50px "><%=session.getAttribute("profile")%></a>
+			<a style="float: right;">Welocme | </a>
 		<% 
 		}
 		%>

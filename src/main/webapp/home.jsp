@@ -32,34 +32,12 @@ body {
 	text-decoration: none;
 }
 
-.navbar #file {
-	float: right;
-	display: block;
-	color: white;
-	text-align: center;
-	padding: 14px 16px;
-	text-decoration: none;
-}
-
-.navbar #submit {
-	float: right;
-	display: block;
-	text-align: center;
-	padding: 14px 16px;
-	text-decoration: none;
-}
-
 .navbar a:hover {
 	background-color: #ddd;
 	color: black;
 }
 
-.navbar #file:hover {
-	background-color: #ddd;
-	color: black;
-}
-
-.navbar #submit:hover {
+#submit:hover {
 	background-color: #ddd;
 	color: black;
 }
@@ -68,28 +46,56 @@ body {
 	text-align: center;
 	padding: 100px;
 }
+
+.upload-container {
+	text-align: center;
+	margin-top: 150px
+}
+
+.custom-upload {
+	background-color: #007bff;
+	color: #fff;
+	padding: 10px 20px;
+	border: none;
+	cursor: pointer;
+}
 </style>
 </head>
 <body>
 	<div class="navbar">
-		<a href="home.jsp">Home</a> 
-		<a href="about.jsp">About</a>
-		<a href="logout.jsp">Logout</a>
-		<a href="#">Images</a>
-		<a href="#">Videos</a>
-		<form action="upload-servlet" method="post" enctype="multipart/form-data">
-			<input id="file" type="file" name="filename" placeholder="Choose file"
-				required="required" accept="image/*"> <input id="submit"
-				type="submit" value="Image Upload">
-		</form>
-		<form action="#" method="post" enctype="multipart/form-data">
-			<input id="file" type="file" name="filename" placeholder="Choose file"
-				required="required" accept="video/*"> <input id="submit"
-				type="submit" value="Video Upload">
+		<a href="home.jsp">Home</a> <a href="about.jsp">About</a> <a
+			href="displayImages.jsp">Images</a> <a href="displayVideos.jsp">Videos</a> <a
+			href="logout.jsp">Logout</a>
+			 <a href="profile.jsp"
+			style="float: right; border: groove; margin-right: 50px "><%=session.getAttribute("profile")%></a>
+			<a style="float: right;">Welocme | </a>
+	</div>
+
+	<div class="upload-container">
+		<form action="image-upload-servlet" method="post"
+			enctype="multipart/form-data">
+			<h1>
+				<label class="custom-upload">Image Video</label>
+			</h1>
+			<input type="file" id="video" name="filename" class="upload-input" style="margin-left: 80px"
+				required="required" accept="image/*"> <input type="text"
+				name="filetype" value="image" hidden="true">
+				<br> <br> <input type="submit" value="Upload" id="submit">	
 		</form>
 	</div>
-	
-	
+	<div class="upload-container">
+		<form action="video-upload-servlet" method="post"
+			enctype="multipart/form-data">
+			<h1>
+				<label class="custom-upload"> Upload Video</label>
+			</h1>
+			<input type="file" id="file" name="filename" class="upload-input"
+				style="margin-left: 80px" required="required" accept="video/*">
+			<br> <br> <input type="submit" value="Upload" id="submit">
+			<input type="text" name="filetype" value="video" hidden="true">
+		</form>
+	</div>
+
 	<h1 id="status" style="display: none;"><%=request.getAttribute("status")%></h1>
 
 	<script async="false">

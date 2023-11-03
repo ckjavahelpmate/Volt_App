@@ -50,6 +50,7 @@
         }
 
         .form-container input[type="number"],
+        .form-container input[type="text"],
         .form-container input[type="email"],
         .form-container input[type="password"] {
             width: 100%;
@@ -90,6 +91,7 @@
             <h2>Registration</h2>
             <form action="register-servlet" method="post">
                 <input type="number" placeholder="User Id" name="user-id" required><br><br>
+                <input type="text" placeholder="User name" name="user-name" required><br><br>
                 <input type="email" placeholder="Email" name="user-email" required><br><br>
                 <input type="password" placeholder="Password" name="user-password" required><br><br>
                 <button type="submit">Register</button>
